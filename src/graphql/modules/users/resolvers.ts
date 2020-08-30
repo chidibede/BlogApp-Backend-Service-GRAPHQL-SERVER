@@ -1,4 +1,4 @@
-import { users, user, registerUser } from "./resolverFunctions";
+import { users, user, registerUser, loginUser } from "./resolverFunctions";
 
 export const resolvers = {
   Query: {
@@ -8,6 +8,7 @@ export const resolvers = {
 
   Mutation: {
     registerUser,
+    loginUser
   }
 };
 

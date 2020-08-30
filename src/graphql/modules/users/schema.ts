@@ -20,7 +20,7 @@ const typeDefs = gql`
 
   type LoginUserResponse {
     message: String!
-    user: User!
+    loggedInUser: User
   }
 
   extend type Mutation {
@@ -31,7 +31,7 @@ const typeDefs = gql`
       password: String!
     ): RegisterUserResponse
 
-    loginUser(email: String, password: String): LoginUserResponse!
+    loginUser(email: String, password: String): LoginUserResponse
   }
 `;
 

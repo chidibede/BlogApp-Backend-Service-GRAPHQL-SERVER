@@ -3,7 +3,7 @@ import {RegisterUserInterface, LoginUserInterface} from '../interfaces/userInter
 
 export const RegisterValidation = (data: RegisterUserInterface) => {
   const schema = Joi.object({
-    username: Joi.string().min(6).required(),
+    username: Joi.string().min(4).required(),
     email: Joi.string().required().email(),
     password: Joi.string().min(8).required(),
   });

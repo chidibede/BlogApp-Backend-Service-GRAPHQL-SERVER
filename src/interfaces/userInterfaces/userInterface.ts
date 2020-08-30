@@ -1,19 +1,19 @@
 // User interface for creating and updating 
 export interface RegisterUserInterface {
-    id?: number,
+    id?: string,
     username: string,
     email: string,
     password: string
 }
 
 export interface LoginUserInterface {
-    id?: number,
+    id?: string,
     email: string,
     password: string
 }
 
 export interface UpdateUserInterface {
-    id?: number,
+    id?: string,
     username?: string,
     email?: string,
     password?: string
