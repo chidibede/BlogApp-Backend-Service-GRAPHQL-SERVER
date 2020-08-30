@@ -1,5 +1,6 @@
 require('dotenv').config()
 import express, { Application } from "express";
+import {ApolloServer} from 'apollo-server-express';
 import mongoose from 'mongoose'
 import cors from 'cors';
 
@@ -18,9 +19,18 @@ mongoose.connect(
     }
   );
   
-  app.use(cors());
+app.use(cors());
+
+const apolloServer: ApolloServer = new ApolloServer({
+  modules: [
+    require("./graphql/modules/posts/index"),
+    require('./graphql/modules/users/index'),
+  ],
+})
+
+apolloServer.applyMiddleware({app, path:'/graphql'})
 
 const port = process.env.PORT || 5005
 app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
+    console.log(`Server running on http://localhost:${port}/graphql`);
 })
