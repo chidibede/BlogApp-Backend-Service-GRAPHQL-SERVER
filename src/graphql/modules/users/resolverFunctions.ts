@@ -32,6 +32,7 @@ export const registerUser = async (_: any, args: RegisterUserInterface) => {
   const matchedEmail = User.findOne({email: args.email});
 
   // hash password
+  const password: Promise<string> = bcrypt.hash(args.password, 12)
 
   // TODO: Issue tokens
 };
