@@ -1,30 +1,38 @@
-import {gql} from 'apollo-server-express';
+import { gql } from "apollo-server-express";
 
 const typeDefs = gql`
-    extend type Query {
-        users: [User!]
-        user(id: ID!): User!
-    }
+  extend type Query {
+    users: [User!]
+    user(id: ID!): User!
+  }
 
-    input RegisterUserInput {
-        firstname: String
-        lastname: String
-        username: String!
-        email: String!
-        password: String!
-    }
+  type User {
+    username: String
+    email: String
+    password: String
+    token: String
+  }
 
-    type User{
-        firstname: String
-        lastname: String
-        username: String!
-        email: String!
-        password: String!
-    }
+  type RegisterUserResponse {
+    message: String!
+    newUser: User
+  }
 
-    extend type Mutation{
-        registerUser(registerInput: RegisterUserInput): User
-    }
-`
+  type LoginUserResponse {
+    message: String!
+    user: User!
+  }
+
+  extend type Mutation {
+
+    registerUser(
+      username: String!
+      email: String!
+      password: String!
+    ): RegisterUserResponse
+
+    loginUser(email: String, password: String): LoginUserResponse!
+  }
+`;
 
 export default typeDefs;

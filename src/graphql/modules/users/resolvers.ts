@@ -1,12 +1,13 @@
+import { users, user, registerUser } from "./resolverFunctions";
+
 export const resolvers = {
   Query: {
-    users: () => {
-      return "hi";
-    },
+    users,
+    user
   },
 
-  Mutation: () => {
-
+  Mutation: {
+    registerUser,
   }
 };
 
